@@ -6,9 +6,9 @@ print "data:"
 }
 
 {printf "  " $1 ": "}
-{"echo " $2 "| base64 -w0 -" | getline b64}
+{"echo " $2 " | tr -d '\n' | base64 -w0 -" | getline b64}
 {print b64}
-{close("echo " $2 "| base64 -w0 -")}
+{close("echo " $2 " | tr -d '\n' | base64 -w0 -")}
 
 END {
 print "kind: Secret"
